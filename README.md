@@ -1,3 +1,5 @@
+Laptop Price Prediction Using Machine Learning
+
 This project predicts laptop prices based on specifications like processor type, RAM, storage, brand, and other features. By applying various machine learning algorithms, the system helps users estimate laptop prices, making it a valuable tool for consumers and retailers.
 
 Features
