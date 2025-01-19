@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laptop Price Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            margin-top: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-top: 20px;
+        }
+
+        .header {
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            font-size: 24px;
+            color: #007bff;
+        }
+
+        .error-message {
+            color: red;
+            text-align: center;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Welcome to the Laptop Price Predictor</h1>
+    </div>
+
+    <div class="container">
+        <h1>Predict Laptop Price</h1>
+
+        <form method="POST" action="/predict">
+            <div class="form-group">
+                <label for="algorithm">Select Algorithm</label>
+                <select id="algorithm" name="algorithm" required>
+                    <option value="Decision Tree">Decision Tree</option>
+                    <option value="Random Forest">Random Forest</option>
+                    <option value="SVM">Support Vector Machine</option>
+                    <option value="KNN">K-Nearest Neighbors</option>
+                    <option value="Gradient Boosting">Gradient Boosting</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="company">Company</label>
+                <input type="text" name="company" id="company" placeholder="e.g., Dell, HP, Lenovo" required>
+            </div>
+
+            <div class="form-group">
+                <label for="product">Product</label>
+                <input type="text" name="product" id="product" placeholder="e.g., Inspiron 15" required>
+            </div>
+
+            <div class="form-group">
+                <label for="typename">Type</label>
+                <input type="text" name="typename" id="typename" placeholder="e.g., Gaming, Ultrabook" required>
+            </div>
+
+            <div class="form-group">
+                <label for="cpu">CPU</label>
+                <input type="text" name="cpu" id="cpu" placeholder="e.g., Intel Core i5" required>
+            </div>
+
+            <div class="form-group">
+                <label for="gpu">GPU</label>
+                <input type="text" name="gpu" id="gpu" placeholder="e.g., NVIDIA GTX 1050" required>
+            </div>
+
+            <div class="form-group">
+                <label for="os">Operating System</label>
+                <input type="text" name="os" id="os" placeholder="e.g., Windows 10" required>
+            </div>
+
+            <div class="form-group">
+                <label for="inches">Screen Size (Inches)</label>
+                <input type="text" name="inches" id="inches" placeholder="e.g., 15.6" required>
+            </div>
+
+            <div class="form-group">
+                <label for="ram">RAM (GB)</label>
+                <input type="text" name="ram" id="ram" placeholder="e.g., 8, 16" required>
+            </div>
+
+            <div class="form-group">
+                <label for="weight">Weight (kg)</label>
+                <input type="text" name="weight" id="weight" placeholder="e.g., 2.5" required>
+            </div>
+
+            <div class="form-group">
+                <label for="width">Width (mm)</label>
+                <input type="text" name="width" id="width" placeholder="e.g., 360" required>
+            </div>
+
+            <div class="form-group">
+                <label for="height">Height (mm)</label>
+                <input type="text" name="height" id="height" placeholder="e.g., 20" required>
+            </div>
+
+            <button type="submit">Predict Price</button>
+        </form>
+
+        {% if error_message %}
+            <div class="error-message">
+                <p>{{ error_message }}</p>
+            </div>
+        {% endif %}
+
+        {% if predicted_price %}
+            <h2>Predicted Price: €{{ predicted_price }}</h2>
+            <p>Using {{ selected_algorithm }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>
