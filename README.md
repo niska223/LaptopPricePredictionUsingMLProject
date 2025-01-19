@@ -3,14 +3,14 @@ Laptop Price Prediction Using Machine Learning
 This project predicts laptop prices based on specifications like processor type, RAM, storage, brand, and other features. By applying various machine learning algorithms, the system helps users estimate laptop prices, making it a valuable tool for consumers and retailers.
 
 Features
-1. Data Preprocessing: The dataset was cleaned and prepared for model training.
-2. Algorithms Used: Experimented with multiple machine learning algorithms, including:
+ Data Preprocessing: The dataset was cleaned and prepared for model training.
+ Algorithms Used: Experimented with multiple machine learning algorithms, including:
   1. Gradient Boosting
   2. Support Vector Regression (SVR)
   3. K-Nearest Neighbors (KNN)
   4. Decision Tree
   5. Random Forest
-3. Price Prediction: Provides an estimated laptop price based on user-defined specifications.
+ Price Prediction: Provides an estimated laptop price based on user-defined specifications.
    
 Tools and Technologies
 1. Programming Language: Python
